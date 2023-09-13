@@ -6,12 +6,15 @@
 
 import app from "../app.js"
 import http from "http"
+import Config from "../config.js";
 
 /**
  * Get port from environment and store in Express.
  */
 
-const port = 3000
+const config = new Config()
+
+const port = config.port
 app.set('port', port);
 
 /**
@@ -54,7 +57,7 @@ const onError = (error) => {
 
 const onListening = () => {
   const addr = server.address();
-  console.log(`Webservice rodando ${addr.port}`)
+  console.log(`Webservice rodando ${addr['port']}`)
 }
 
 server.listen(port);
